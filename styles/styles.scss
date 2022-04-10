@@ -64,33 +64,28 @@ section{
     // Default display: none, because we only want to see the sections when we switch into the section
     display: none;
     transform: translateY(0) scale(1);
-    background-color: salmon;
 }
 
 .sec2{
     // Default display: none, because we only want to see the sections when we switch into the section
     display: none;
     transform: translateY(0) scale(1);
-    background-color: slateblue;
 }
 .sec3{
     // Default display: none, because we only want to see the sections when we switch into the section
     display: none;
     transform: translateY(0) scale(1);
-    background-color: yellowgreen;
 }
 .sec4{
     // Default display: none, because we only want to see the sections when we switch into the section
     display: none;
     transform: translateY(0) scale(1);
-    background-color: darkorange;
 }
 
 .sec5{
     // Default display: none, because we only want to see the sections when we switch into the section
     display: none;
     transform: translateY(0) scale(1);
-    background-color: darkcyan;
 }
 
 // Display active sections when clicked
@@ -144,6 +139,110 @@ section{
             color: var(--color-grey-2);
             // When I click, the icon should not react to the click
             pointer-events: none;
+        }
+    }
+}
+
+// Header content
+.header-content{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 100%;
+    .left-header{
+        display: flex;
+        align-items: center;
+        position: relative;
+        .h-shape{
+            transition: all .4s ease-in-out;
+            width: 65%;
+            height: 100%;
+            background-color: var(--color-secondary);
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: -1;
+            clip-path: polygon(0 0, 46% 0, 79% 100%, 0% 100%);
+        }
+        .image{
+            border-radius: var(--br-sm-2);
+            height: 90%;
+            width: 68%;
+            margin-left: 4rem;
+            background-color: var(--color-black);
+            transition: all .4s ease-in-out;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: all .4s ease-in-out;
+                filter: grayscale(100%);
+                &:hover{
+                    filter: grayscale(0); // When hover over image, change to colour
+                }
+            }
+        }
+    }
+
+    .right-header{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-right: 18rem;
+        .name{
+            font-size: 3rem;
+            span{
+                color: var(--color-secondary);
+            }
+        }
+        p{
+            margin: 1.5rem 0;
+            line-height: 2rem;
+        }
+    }
+}
+
+// Independent components
+.btn-con{
+    display: flex;
+    align-self: flex-start;
+}
+.main-btn{
+    border-radius: 30px;
+    color: inherit;
+    font-weight: 600;
+    position: relative;
+    border: 1px solid var(--color-secondary);
+    display: flex;
+    align-self: flex-start;
+    align-items: center;
+    overflow: hidden;
+    .btn-text{
+        padding: 0 2rem;
+    }
+    .btn-icon{
+        background-color: var(--color-secondary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        padding: 1rem;
+    }
+    &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translateX(100%); // Direction of green slider
+        transition: all .4s ease-in-out;
+        z-index: -1; // Move position of button to back
+    }
+    &:hover{ // While hovering, the CV button has green highlighting slider effect
+        &::before{ // Before hover
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-secondary);
+            transform: translateX(0); // Go back to default 0
+            transition: all .4s ease-in-out;
         }
     }
 }
